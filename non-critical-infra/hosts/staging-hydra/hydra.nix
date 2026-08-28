@@ -12,6 +12,7 @@ in
   imports = [
     inputs.hydra-staging.nixosModules.web-app
     inputs.hydra-staging.nixosModules.queue-runner
+    inputs.hydra-staging.nixosModules.ws-server
   ];
 
   networking.firewall.allowedTCPPorts = [
@@ -89,6 +90,10 @@ in
 
         log_prefix = https://cache.nixos.org/
 
+        # Live log tailing. The path is proxied to `hydra-ws-dev` by nginx in
+        # hydra-proxy.nix; the server ignores it and upgrades any request.
+        ws_endpoint = wss://staging-hydra.nixos.org/ws
+
         evaluator_workers = 4
         evaluator_max_memory_size = 4096
 
@@ -129,6 +134,11 @@ in
         usePresignedUploads = true;
         forcedSubstituters = [ "https://cache-staging.nixos.org" ];
       };
+    };
+
+    hydra-ws-dev = {
+      enable = true;
+      settings.maxDbConnections = 50;
     };
 
     nginx = {
