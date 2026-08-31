@@ -491,16 +491,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1787950712,
-        "narHash": "sha256-oSafzVzkwjivoNhc9ljLvA2kRB0dlaya+bwVrXVU3AM=",
-        "owner": "NixOS",
+        "lastModified": 1788211108,
+        "narHash": "sha256-cgwpvzDx/u3BVZv4EUzQxpki26EzB+SGiw9tL2OnpLE=",
+        "owner": "obsidiansystems",
         "repo": "hydra",
-        "rev": "ceb450ca7bc4b3a227dd1b58a321e43d1a24b657",
+        "rev": "c299e2507b34619a8dbf5ab464061e3612fc92bc",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "without-timestamp-migration",
+        "owner": "obsidiansystems",
+        "ref": "eval-error-hydra-notify",
         "repo": "hydra",
         "type": "github"
       }
