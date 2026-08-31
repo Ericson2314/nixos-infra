@@ -12,7 +12,8 @@ in
   imports = [
     inputs.hydra-staging.nixosModules.web-app
     inputs.hydra-staging.nixosModules.queue-runner
-    inputs.hydra-staging.nixosModules.ws-server
+    # Back to no websockets server for now
+    #inputs.hydra-staging.nixosModules.ws-server
   ];
 
   networking.firewall.allowedTCPPorts = [
@@ -136,10 +137,10 @@ in
       };
     };
 
-    hydra-ws-dev = {
-      enable = true;
-      settings.maxDbConnections = 50;
-    };
+    # hydra-ws-dev = {
+    #   enable = true;
+    #   settings.maxDbConnections = 50;
+    # };
 
     nginx = {
       enable = true;
