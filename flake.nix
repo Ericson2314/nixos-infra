@@ -34,8 +34,10 @@
 
     # What staging-hydra.nixos.org and the ofborg builders feeding it run, so a
     # hydra change can be exercised there before `hydra` above moves.
+    #
+    # Testing a PR
     hydra-staging = {
-      url = "github:NixOS/hydra/without-timestamp-migration";
+      url = "github:obsidiansystems/hydra/eval-error-hydra-notify";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.treefmt-nix.follows = "treefmt-nix";
     };
