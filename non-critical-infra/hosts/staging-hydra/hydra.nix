@@ -79,6 +79,14 @@ in
         server_store_uri = https://cache-staging.nixos.org?local-nar-cache=${narCache}
         binary_cache_public_uri = https://cache-staging.nixos.org
 
+        # Only the mail that goes to a project's owner. Build results would go
+        # to whoever maintains the job -- real nixpkgs maintainers, from a
+        # staging instance -- so that half stays off.
+        <email_notifications>
+          build = 0
+          eval = 1
+        </email_notifications>
+
         <Plugin::Session>
           cache_size = 32m
         </Plugin::Session>
@@ -197,9 +205,9 @@ in
       "d ${narCache}      0775 hydra hydra 1d -"
     ];
 
-    # eats memory as if it was free
     services = {
-      hydra-notify.enable = false;
+      # Maybe doesn't "eat memory as if it was free" anymore with newer PostgreSQL?
+      hydra-notify.enable = true;
       hydra-queue-runner = {
         enable = false;
 
