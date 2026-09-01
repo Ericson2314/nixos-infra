@@ -491,11 +491,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1788272672,
-        "narHash": "sha256-uWYQMWC/5aaA4jubwA7ACVCGFDUxs49NoXjQp/VuFe4=",
+        "lastModified": 1788274542,
+        "narHash": "sha256-AG6NCqwaf4rtzvPudr8xzDPcJwNsQ1U0j2gXC01+Jo0=",
         "owner": "obsidiansystems",
         "repo": "hydra",
-        "rev": "e28335d76db08ac93b84c39cb6c16f090afbf85f",
+        "rev": "2cbc096765ec86317746601c1737fe3b7566e41d",
         "type": "github"
       },
       "original": {
