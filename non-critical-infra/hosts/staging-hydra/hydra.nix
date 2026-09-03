@@ -7,6 +7,11 @@
 }:
 let
   narCache = "/var/cache/hydra/nar-cache";
+
+  # In `notify/` because the module already creates it owned by the user the
+  # senders run as; /var/lib/hydra itself belongs to `hydra`, which they are
+  # not, and could not create a file in.
+  mailSink = "/var/lib/hydra/notify/mail-sink";
 in
 {
   imports = [
@@ -72,6 +77,14 @@ in
       notificationSender = "edolstra@gmail.com";
       smtpHost = "localhost";
       useSubstitutes = true;
+      extraEnv = {
+        # There is no MTA here, and a failed send is no longer caught: it fails
+        # the task and is retried with backoff. So mail is written to a file
+        # rather than sent, and also printed, which is the whole of what this
+        # host does with it.
+        HYDRA_MAIL_SINK = mailSink;
+        HYDRA_MAIL_TEST = "1";
+      };
       extraConfig = ''
         max_servers 30
 
